@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  commander:
+    build:
+      context: .
+      dockerfile: ./commander/Dockerfile
+    container_name: commander_con
+    volumes:
+      - ./commander:/app
+    ports:
+      - 5050:5000
+
+  general1:
+    build:
+      context: .
+      dockerfile: ./general1/Dockerfile
+    container_name: general1_con
+    volumes:
+      - ./general1:/app
+    depends_on: # 먼저 실행되는 컨테이너
+      - commander
+    ports:
+      - 5051:5001
+
+  general2:
+    build:
+      context: .
+      dockerfile: ./general2/Dockerfile
+    container_name: general2_con
+    volumes:
+      - ./general2:/app
+    depends_on: # 먼저 실행되는 컨테이너
+      - general1
+    ports:
+      - 5052:5002
+
+  general3:
+    build:
+      context: .
+      dockerfile: ./general3/Dockerfile
+    container_name: general3_con
+    volumes:
+      - ./general3:/app
+    depends_on: # 먼저 실행되는 컨테이너
+      - general2
+    ports:
+      - 5053:5003
