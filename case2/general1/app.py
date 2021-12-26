@@ -12,7 +12,7 @@ def general1_service():
 def get_general1():
         commander_response = ""
         try:
-            commander_response = requests.get("http://172.30.48.1:5050/commander")
+            commander_response = requests.get("http://commander_con:5000/commander")
         except requests.exceptions.RequestException as e:
             return "error"
         return commander_response.text

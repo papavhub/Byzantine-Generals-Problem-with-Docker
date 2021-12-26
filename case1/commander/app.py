@@ -19,9 +19,9 @@ def final_result():
         general2_result = ""
         general3_result = ""
         try:
-            general1_result = requests.get("http://172.30.48.1:5051/general1_result")
-            general2_result = requests.get("http://172.30.48.1:5052/general2_result")
-            general3_result = requests.get("http://172.30.48.1:5053/general3_result")
+            general1_result = requests.get("http://general1_con:5001/general1_result")
+            general2_result = requests.get("http://general2_con:5002/general2_result")
+            general3_result = requests.get("http://general3_con:5003/general3_result")
 
         except requests.exceptions.RequestException as e:
             return "error"
